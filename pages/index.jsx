@@ -5,9 +5,11 @@ export default function Home() {
   useEffect(() => {
     async function init() {
       try {
-        let res = await fetch(process.env.NEXT_PUBLIC_IMAGE_URL);
-        res = await res.json();
-        console.log(res);
+        // let res = await fetch(process.env.NEXT_PUBLIC_IMAGE_URL);
+        // res = await res.json();
+        // console.log(res);
+        console.log("env vars...");
+        console.log(process.env.NEXT_PUBLIC_RANDOM_IMAGE_URL);
       } catch (error) {
         console.log(error);
       }
