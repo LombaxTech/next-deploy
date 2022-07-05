@@ -1,11 +1,31 @@
-import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    async function init() {
+      try {
+        let res = await fetch(process.env.NEXT_PUBLIC_IMAGE_URL);
+        res = await res.json();
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    init();
+  }, []);
+
   return (
-    <div className="flex justify-center mt-8">
+    <div className="flex flex-col items-center gap-6 justify-center mt-8">
       <div className="bg-red-500 text-white p-4 shadow-md">hello</div>
+      {/* <div>{process.env.NEXT_PUBLIC_TEST}</div> */}
+      <img
+        src={process.env.NEXT_PUBLIC_RANDOM_IMAGE_URL}
+        // src="https://random.imagecdn.app/500/500"
+        alt="random image"
+        className="mb-6"
+      />
     </div>
   );
 }
